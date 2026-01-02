@@ -197,3 +197,27 @@ function closeModal() {
 }
 
 loadAllCountriesOnLoad();
+
+const themeBtn = document.getElementById("theme-btn");
+const body = document.body;
+
+// Load saved theme
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+  body.classList.add("dark-mode");
+  themeBtn.textContent = "☀️ Light Mode";
+}
+
+// Toggle theme
+themeBtn.onclick = () => {
+  body.classList.toggle("dark-mode");
+
+  if (body.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
+    themeBtn.textContent = "☀️ Light Mode";
+  } else {
+    localStorage.setItem("theme", "light");
+    themeBtn.textContent = "🌙 Dark Mode";
+  }
+};
+
